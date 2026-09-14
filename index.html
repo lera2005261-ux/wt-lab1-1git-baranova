@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Мое лето</title>
+<title>Как я провела лето</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
   :root{
-    --ink:#122A2B;
-    --sand:#EFE3C4;
-    --teal:#0E4B4C;
-    --sun:#E1A339;
-    --coral:#E15A3E;
-    --paper:#FBF6E9;
+    --sky:#6FA0DD;
+    --sky-deep:#5A8FD0;
+    --navy:#132339;
+    --navy-soft:#1B3150;
+    --cream:#F6EFE3;
+    --ink:#16222E;
+    --coral:#E2735A;
   }
 
   html{ scroll-behavior:smooth; }
@@ -24,202 +25,191 @@
   body{
     font-family:'Inter', sans-serif;
     color:var(--ink);
-    background:var(--paper);
+    background:var(--sky);
   }
 
   h1, h2, h3, .display-font{
-    font-family:'Fraunces', serif;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+  }
+
+  .kicker{
+    font-family:'Inter', sans-serif;
+    font-style:normal;
+    font-weight:600;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--coral);
   }
 
   a{ color:inherit; }
 
   /* ---------- NAV ---------- */
   .site-nav{
-    background:var(--paper);
-    border-bottom:1px solid rgba(18,42,43,.12);
-    position:sticky;
-    top:0;
-    z-index:20;
+    background:rgba(111,160,221,.92);
+    backdrop-filter:blur(6px);
+    position:sticky; top:0; z-index:30;
+    border-bottom:1px solid rgba(255,255,255,.25);
   }
   .site-nav .brand{
-    font-family:'Fraunces', serif;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
     font-weight:600;
-    font-size:1.1rem;
+    font-size:1.2rem;
+    color:#fff;
   }
   .site-nav a.nav-link{
-    color:var(--ink);
-    font-size:.95rem;
-    padding:.4rem .1rem;
-    margin-inline:.9rem;
-    border-bottom:2px solid transparent;
+    color:#fff; opacity:.85;
+    font-size:.9rem;
+    margin-inline:.8rem;
   }
-  .site-nav a.nav-link:hover{
-    border-bottom:2px solid var(--sun);
+  .site-nav a.nav-link:hover{ opacity:1; }
+
+  /* ---------- INTRO ---------- */
+  .intro{
+    text-align:center;
+    padding-block:4.5rem 3rem;
+    color:#fff;
+  }
+  .intro .avatar{
+    width:110px; height:110px; border-radius:50%;
+    object-fit:cover;
+    border:4px solid rgba(255,255,255,.6);
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+  }
+  .intro h1{
+    font-size:clamp(2.4rem, 6vw, 3.6rem);
+    margin-top:1.4rem;
+    font-weight:600;
+  }
+  .intro .sub{
+    font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+    font-size:.85rem; color:#EAF1FC;
   }
 
-  /* ---------- HERO ---------- */
-  .hero{
-    background:var(--teal);
-    color:var(--sand);
+  /* ---------- SLIDE CARDS ---------- */
+  .deck{ padding-bottom:5rem; }
+  .slide-row{ margin-bottom:1.1rem; }
+  .card-photo{
+    position:relative;
+    border-radius:18px;
     overflow:hidden;
-    position:relative;
+    background:var(--navy);
+    min-height:340px;
+    box-shadow:0 20px 45px -18px rgba(19,35,57,.55);
   }
-  .hero .sun{
-    position:absolute;
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    background:var(--sun);
-    top:-70px;
-    right:-70px;
-    opacity:.9;
+  .card-photo img{
+    position:absolute; inset:0;
+    width:100%; height:100%; object-fit:cover;
+    opacity:.88;
   }
-  .hero h1{
-    font-size:clamp(2.6rem, 6vw, 4.6rem);
-    font-weight:700;
-    line-height:1.05;
-    letter-spacing:-.01em;
-  }
-  .hero .lede{
-    font-size:1.1rem;
-    max-width:34ch;
-    color:#D9E7DC;
-  }
-  .hero .stamp{
-    display:inline-block;
-    border:1.5px solid var(--sand);
-    border-radius:999px;
-    padding:.35rem 1rem;
-    font-size:.85rem;
-    letter-spacing:.03em;
-  }
-  .hero-photo{
-    position:relative;
-    z-index:2;
-  }
-  .hero-photo img{
-    width:100%;
-    border-radius:6px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,.45);
-    transform:rotate(2deg);
-  }
-  .hero-photo::after{
+  .card-photo::after{
     content:"";
-    position:absolute;
-    inset:14px -14px -14px 14px;
-    border:2px solid var(--sun);
-    border-radius:6px;
-    z-index:-1;
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(19,35,57,.05) 40%, rgba(19,35,57,.85) 100%);
+  }
+  .card-photo .cap{
+    position:relative; z-index:2;
+    height:100%;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:1.6rem;
+    color:#fff;
+  }
+  .card-photo .cap .tag{
+    font-size:.75rem; letter-spacing:.1em; text-transform:uppercase;
+    opacity:.75; margin-bottom:.5rem;
+  }
+  .card-photo .cap h3{
+    font-size:1.6rem; margin:0; font-weight:600;
   }
 
-  /* ---------- STORY SECTION ---------- */
-  .story{
-    padding-block:5rem;
+  .card-cream{
+    background:var(--cream);
+    border-radius:18px;
+    padding:1.6rem;
+    height:100%;
+    box-shadow:0 12px 30px -14px rgba(19,35,57,.3);
   }
-  .story .kicker{
-    color:var(--coral);
-    font-weight:600;
-    font-size:.95rem;
+  .card-cream h3{
+    font-size:1.35rem; margin-bottom:.6rem; font-style:italic; font-weight:600;
   }
-  .story h2{
-    font-size:clamp(1.8rem, 3.5vw, 2.6rem);
-    margin-bottom:1.2rem;
-  }
-  .story p{
-    max-width:65ch;
-    line-height:1.75;
-    font-size:1.05rem;
+  .card-cream p{
+    font-size:.95rem; line-height:1.6; color:#3A3226;
   }
 
-  /* ---------- CAMP FEATURE ---------- */
-  .camp{
-    background:var(--sand);
-    padding-block:5rem;
-  }
-  .camp .kicker{
-    color:var(--teal);
-    font-weight:600;
-    font-size:.95rem;
-  }
-  .camp h2{
-    font-size:clamp(1.8rem, 3.5vw, 2.6rem);
-    margin-bottom:1.1rem;
-  }
-  .camp p{
-    line-height:1.75;
-    font-size:1.05rem;
-  }
-  .camp-photo img{
-    width:100%;
-    border-radius:8px;
-    box-shadow:0 25px 50px -18px rgba(18,42,43,.4);
-  }
-  .badge-row{
+  .stat-strip{
+    background:var(--navy);
+    border-radius:18px;
+    padding:1.8rem;
     display:flex;
     flex-wrap:wrap;
-    gap:.6rem;
-    margin-top:1.6rem;
+    gap:1.6rem;
+    justify-content:space-between;
   }
-  .badge-pill{
-    background:var(--teal);
-    color:var(--sand);
-    border-radius:999px;
-    padding:.4rem 1rem;
-    font-size:.85rem;
+  .stat-strip .stat{ color:#fff; min-width:90px; }
+  .stat-strip .stat .num{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:2.1rem;
+    color:#fff;
   }
-
-  /* ---------- MOMENTS (alternating rows) ---------- */
-  .moments-section{
-    padding-block:4rem;
-  }
-  .moment{
-    padding-block:3rem;
-    border-top:1px solid rgba(18,42,43,.12);
-  }
-  .moment .num{
-    font-family:'Fraunces', serif;
-    font-size:3rem;
-    color:var(--sun);
-    line-height:1;
-  }
-  .moment h3{
-    font-size:1.6rem;
-    margin-bottom:.6rem;
-  }
-  .moment p{
-    line-height:1.7;
-    max-width:55ch;
+  .stat-strip .stat .label{
+    font-size:.78rem; opacity:.75; letter-spacing:.04em;
   }
 
-  /* ---------- QUOTE ---------- */
+  .split-card{
+    border-radius:18px;
+    overflow:hidden;
+    background:var(--cream);
+    box-shadow:0 20px 45px -18px rgba(19,35,57,.4);
+    display:flex;
+    min-height:380px;
+  }
+  .split-card .photo-half{ flex:1 1 45%; position:relative; }
+  .split-card .photo-half img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .split-card .text-half{
+    flex:1 1 55%; padding:2.2rem;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .split-card .text-half h3{ font-size:1.7rem; margin-bottom:.8rem; }
+  .split-card .text-half p{ font-size:.98rem; line-height:1.7; color:#3A3226; }
+  @media (max-width:767px){
+    .split-card{ flex-direction:column; min-height:auto; }
+    .split-card .photo-half{ min-height:220px; }
+  }
+
+  .thumb-row{
+    background:var(--navy);
+    border-radius:18px;
+    padding:1.2rem;
+    display:flex; gap:.7rem;
+    overflow:hidden;
+  }
+  .thumb-row img{
+    flex:1;
+    height:110px; object-fit:cover;
+    border-radius:10px;
+    filter:saturate(1.05);
+  }
+
+  /* ---------- CLOSING ---------- */
   .closing{
-    background:var(--teal);
-    color:var(--sand);
-    padding-block:4.5rem;
     text-align:center;
+    padding-block:4rem 5rem;
+    color:#fff;
   }
   .closing p{
-    font-family:'Fraunces', serif;
-    font-size:clamp(1.4rem, 3vw, 2rem);
-    max-width:38ch;
-    margin-inline:auto;
-    line-height:1.4;
+    font-size:clamp(1.5rem, 3vw, 2.1rem);
+    max-width:34ch; margin-inline:auto; line-height:1.4;
   }
 
-  /* ---------- FOOTER ---------- */
   footer{
-    background:var(--ink);
-    color:var(--sand);
-    padding-block:2.5rem;
+    background:var(--navy);
+    color:#B9C6D8;
+    padding-block:2.2rem;
   }
-  footer a{
-    color:var(--sun);
-    text-decoration:none;
-  }
-
-  @media (max-width: 767px){
-    .hero-photo img{ transform:rotate(0); }
-  }
+  footer a{ color:#fff; text-decoration:none; }
 </style>
 </head>
 <body>
@@ -227,93 +217,118 @@
 <!-- ======= NAV ======= -->
 <nav class="site-nav py-3">
   <div class="container d-flex justify-content-between align-items-center">
-    <span class="brand">Лето&nbsp;25</span>
+    <span class="brand">Лето 25</span>
     <div class="d-none d-md-block">
       <a class="nav-link" href="#top">Начало</a>
       <a class="nav-link" href="#camp">Лагерь</a>
-      <a class="nav-link" href="#moments">Моменты</a>
+      <a class="nav-link" href="#reflect">Итоги</a>
     </div>
   </div>
 </nav>
 
-<!-- ======= HERO ======= -->
-<header class="hero" id="top">
-  <div class="sun"></div>
-  <div class="container py-5">
-    <div class="row align-items-center gy-5 py-4">
-      <div class="col-lg-6 order-2 order-lg-1">
-        <span class="stamp mb-4 d-inline-block">Лето, которое запомнится</span>
-        <h1 class="mt-3 mb-4">Как я&nbsp;провёл лето</h1>
-        <p class="lede">Три месяца, из которых почти месяц прошёл в детском лагере, а остальное — в дороге и дома. Короткий рассказ о том, куда завело меня это лето и что осталось на память.</p>
-      </div>
-      <div class="col-lg-6 order-1 order-lg-2">
-        <div class="hero-photo mx-auto" style="max-width:380px;">
-          <img src="assets/photo.jpg" alt="Моё фото">
-        </div>
-      </div>
-    </div>
+<!-- ======= INTRO ======= -->
+<header class="intro" id="top">
+  <div class="container">
+    <img class="avatar" src="assets/photo.jpg" alt="Моё фото">
+    <h1 class="mt-3 mb-2">Как я провела лето</h1>
+    <div class="sub">Лето 2025 · Лагерь · Дом</div>
   </div>
 </header>
 
-<!-- ======= INTRO STORY ======= -->
-<section class="story">
+<!-- ======= DECK ======= -->
+<section class="deck">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="kicker mb-2">Вступление</div>
-        <h2>Лето началось со списка, который я так и не выполнил</h2>
-        <p>В июне я расписал план на все три месяца: книги, спорт, поездки. Планы поменялись уже в первую неделю — я устроилась вожатой в детский лагерь и на этом список пришлось переписать заново. Получилось даже лучше, чем задумывалось: вместо расписания было лето из ярких, местами совсем не запланированных моментов.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ======= CAMP FEATURE ======= -->
-<section class="camp" id="camp">
-  <div class="container">
-    <div class="row align-items-center gy-5">
-      <div class="col-lg-6 order-2 order-lg-1">
-        <div class="camp-photo">
-          <img src="assets/camp.jpg" alt="Я с напарниками-вожатыми в лагере">
+    <!-- Row 1 -->
+    <div class="row slide-row g-3">
+      <div class="col-lg-7">
+        <div class="card-photo" style="min-height:420px;">
+          <img src="assets/party.jpg" alt="Цветной вечер в лагере">
+          <div class="cap">
+            <div class="tag">Смена · 2025</div>
+            <h3>Каждый вечер. Особенный.</h3>
+          </div>
         </div>
       </div>
-      <div class="col-lg-6 order-1 order-lg-2">
-        <div class="kicker mb-2">Главное событие лета</div>
-        <h2>Смена в детском лагере</h2>
-        <p>Почти месяц лета я провела вожатой в детском лагере — и это оказался самый насыщенный отрезок каникул. Подъём в семь, отбой заполночь, и между ними — целый день расписан по минутам: зарядка, кружки, конкурсы, купание, вечерние костры.</p>
-        <p>Сложнее всего было в первые дни: тридцать детей, которые тебя не знают, и программа, которую нужно провести без права на ошибку. Но уже к середине смены отряд превратился в настоящую команду — со своими шутками, кричалкой на линейке и той самой красной вожатской косынкой, с которой не расставались ни на минуту.</p>
-        <p>Больше всего запомнились не мероприятия по плану, а то, что происходило вокруг них: разговоры с детьми перед отбоем, смех с напарниками-вожатыми после отбоя, когда наконец можно было выдохнуть, и чувство, что тебе доверили что-то по-настоящему важное.</p>
-        <div class="badge-row">
-          <span class="badge-pill">Вожатая</span>
-          <span class="badge-pill">30 детей в отряде</span>
-          <span class="badge-pill">Смена — 21 день</span>
+      <div class="col-lg-5 d-flex flex-column gap-3">
+        <div class="card-cream" style="flex:1;">
+          <div class="kicker mb-2">Главное событие</div>
+          <h3>Смена вожатой</h3>
+          <p>Почти месяц лета я провела вожатой в детском лагере — подъём в семь, отбой заполночь, а между ними день, расписанный по минутам.</p>
+        </div>
+        <div class="card-cream" style="flex:1;">
+          <div class="kicker mb-2">Результат</div>
+          <h3>Отряд стал командой</h3>
+          <p>К середине смены тридцать незнакомых детей превратились в отряд со своей кричалкой и надписями мелом на асфальте.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ======= MOMENTS ======= -->
-<section class="moments-section" id="moments">
-  <div class="container">
-
-    <div class="moment row align-items-start">
-      <div class="col-lg-2 col-3">
-        <div class="num">01</div>
-      </div>
-      <div class="col-lg-8 col-9">
-        <h3>Последний день смены</h3>
-        <p>В день отъезда дети плакали сильнее, чем в первый день разлуки с родителями — и это было лучшее признание того, что смена удалась. Обменивались контактами, обещали писать, а на прощальном костре весь лагерь пел одну и ту же песню в сотый раз и всё равно не хотел расходиться.</p>
+    <!-- Row 2: stats -->
+    <div class="row slide-row g-3">
+      <div class="col-12">
+        <div class="stat-strip">
+          <div class="stat"><div class="num">21</div><div class="label">день смены</div></div>
+          <div class="stat"><div class="num">30</div><div class="label">детей в отряде</div></div>
+          <div class="stat"><div class="num">5</div><div class="label">кружков в день</div></div>
+          <div class="stat"><div class="num">1</div><div class="label">незабываемое лето</div></div>
+        </div>
       </div>
     </div>
 
-    <div class="moment row align-items-start">
-      <div class="col-lg-2 col-3">
-        <div class="num">02</div>
+    <!-- Row 3 -->
+    <div class="row slide-row g-3" id="camp">
+      <div class="col-lg-5">
+        <div class="card-cream mb-3">
+          <div class="kicker mb-2">Наш дом на лето</div>
+          <h3>Корпус у леса</h3>
+          <p>Двухэтажный корпус с деревянными мансардами, качели у входа и лес прямо за окном — вот где мы жили этот месяц.</p>
+        </div>
+        <div class="card-photo" style="min-height:170px;">
+          <img src="assets/camp.jpg" alt="Команда вожатых">
+          <div class="cap">
+            <div class="tag">Команда</div>
+            <h3 style="font-size:1.2rem;">Вожатые после отбоя</h3>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-8 col-9">
-        <h3>Вечера дома</h3>
-        <p>Самая простая часть лета оказалась самой ценной. Долгие вечера во дворе, разговоры допоздна, ничегонеделание, на которое обычно не хватает времени в учебный год.</p>
+      <div class="col-lg-7">
+        <div class="card-photo" style="min-height:100%;">
+          <img src="assets/building.jpg" alt="Корпус лагеря на рассвете">
+          <div class="cap">
+            <div class="tag">Лагерь</div>
+            <h3>Дом на лето</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: split card -->
+    <div class="row slide-row g-3" id="reflect">
+      <div class="col-12">
+        <div class="split-card">
+          <div class="photo-half">
+            <img src="assets/playground.jpg" alt="Дети на площадке лагеря">
+          </div>
+          <div class="text-half">
+            <div class="kicker mb-2">Взгляд назад</div>
+            <h3>Что я поняла об этом лете</h3>
+            <p>Планы редко сбываются так, как задуманы — и это нормально. Самое ценное лето вышло не по расписанию: тридцать детей, которые тебе доверились, и месяц, после которого я стала немного взрослее.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 5: thumbnails -->
+    <div class="row slide-row g-3">
+      <div class="col-12">
+        <div class="thumb-row">
+          <img src="assets/party.jpg" alt="">
+          <img src="assets/building.jpg" alt="">
+          <img src="assets/playground.jpg" alt="">
+          <img src="assets/camp.jpg" alt="">
+          <img src="assets/photo.jpg" alt="">
+        </div>
       </div>
     </div>
 
@@ -323,14 +338,13 @@
 <!-- ======= CLOSING ======= -->
 <section class="closing">
   <div class="container">
-    <p>Это было лето, после которого я стала немного взрослее — и точно знаю, куда хочу вернуться следующим летом.</p>
+    <p>Это было лето, после которого я точно знаю, куда хочу вернуться следующим летом.</p>
   </div>
 </section>
 
-<!-- ======= FOOTER ======= -->
 <footer>
   <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
-    <span>Как я провёл лето — личная страница</span>
+    <span>Как я провела лето — личная страница</span>
     <a href="#top">Наверх ↑</a>
   </div>
 </footer>
